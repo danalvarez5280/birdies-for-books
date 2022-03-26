@@ -1,7 +1,7 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
   user: 'me',
-  host: 'https://birdies-for-books.herokuapp.com/' || 'localhost',
+  host: 'https://birdies-for-books.herokuapp.com/',
   database: 'birdies_for_books',
   password: 'new_password',
   port: process.env.PORT || 8000,
