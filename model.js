@@ -5,6 +5,5 @@ const findAll = () => {
 };
 
 module.exports = {
-  findAll,
-  findUserById
+  findAll
 };
