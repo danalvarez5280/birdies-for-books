@@ -1,9 +1,10 @@
 const db = require('./data/db-config');
 
 const findAll = () => {
-  return db('users')
+  return db('users');
 };
 
 module.exports = {
-  findAll
+  findAll,
+  findUserById
 };
