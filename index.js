@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const getAllUsers = require('./getAllRoute');
 const getUserById = require('./getUserByIdRoute');
-const createUser = require('./createUserRoute')
+const createUser = require('./createUserRoute');
 
 const server = express();
 const port = process.env.PORT || 8000;
