@@ -1,18 +1,22 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
 
-const server = express()
-const port = process.env.PORT || 8000
+const testRouter = require('./route');
 
-server.use(cors())
-server.use(express.json())
+
+const server = express();
+const port = process.env.PORT || 8000;
+
+server.use(cors());
+server.use(express.json());
+server.use('/test', testRouter);
 
 server.get('/', (req, res) => {
   res.send('<h1>This is the Birdies for Books Api</h1>')
-})
+});
 
 server.listen(port, () => {
   console.log(`\n=== Server listening on port ${port} ===\n`)
-})
+});
