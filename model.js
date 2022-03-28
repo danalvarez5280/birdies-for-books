@@ -32,8 +32,20 @@ const deleteUser = (user_id, res) => {
     });
 };
 
+const updateUserScore = (user_id, user, res) => {
+  return db('users').where({ user_id }).update(user, '*')
+    .then((user) => {
+      if (!user.length) {
+        return res.status(404).json({ error: `The user with ID# ${id} was not found and could not be updated` });
+      }
+      return res.status(200).json(user);
+    })
+    .catch(error => res.status(500).json({ error }));
+};
+
 module.exports = {
   findAll,
   addUser,
-  deleteUser
+  deleteUser,
+  updateUserScore
 };
