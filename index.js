@@ -31,6 +31,11 @@ server.post('/users', async (req, res) => {
   await Users.addUser(newUser, res);
 });
 
+server.delete('/users/:id', async (req, res) => {
+  const { id } = req.params;
+  await Users.deleteUser(id, res);
+})
+
 
 server.listen(port, () => {
   console.log(`Server listening on port ${port}`)

@@ -18,7 +18,22 @@ const addUser = (newUser, res) => {
     });
 };
 
+const deleteUser = (user_id, res) => {
+  return db('users').where({ user_id }).del()
+    .then(user => {
+      if (user) {
+        res.sendStatus(204);
+      } else {
+        res.status(422).json({ error: 'Not Found' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error })
+    });
+};
+
 module.exports = {
   findAll,
-  addUser
+  addUser,
+  deleteUser
 };
