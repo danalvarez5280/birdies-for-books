@@ -32,7 +32,7 @@ const deleteUser = (user_id, res) => {
     });
 };
 
-const updateUserScore = (user_id, user, res) => {
+const updateUser = (user_id, user, res) => {
   return db('users').where({ user_id }).update(user, '*')
     .then((user) => {
       if (!user.length) {
@@ -47,5 +47,5 @@ module.exports = {
   findAll,
   addUser,
   deleteUser,
-  updateUserScore
+  updateUser,
 };
