@@ -31,7 +31,7 @@ server.get('/users/login', async (req, res) => {
   const userInfo = req.body;
   const { email, password } = userInfo;
   const users = await Users.findAll();
-  const userToLogIn = users.filter(user => (user.email === email && user.password === password));
+  const userToLogIn = users.filter(user => (user.email === email && user.password === password))[0];
   res.json(userToLogIn);
 })
 
