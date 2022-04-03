@@ -27,16 +27,36 @@ server.get('/users/by-id/:id', async (req, res) => {
   res.json(individualUser);
 });
 
-server.get('/users/login', async (req, res) => {
-  const userInfo = req.body;
-  const { email, password } = userInfo;
+server.get('/users/login/:email/:password', async (req, res) => {
+  const { email, password } = req.params;
   const users = await Users.findAll();
   const userToLogIn = users.filter(user => (user.email === email && user.password === password))[0];
   res.json(userToLogIn);
 })
 
-server.post('/users', async (req, res) => {
-  const newUser = req.body;
+server.post('/add-users/:name/:email/:password/:phone_number/:pledge_score/:pledge_amount/:score_amount/:outstanding-balance/:amount_paid_to_date', async (req, res) => {
+  const {
+    name,
+    email,
+    password,
+    phone_number,
+    pledge_score,
+    pledge_amount,
+    score_amount,
+    outstanding_balance,
+    amount_paid_to_date,
+    } = req.params;
+  const newUser = {
+    name,
+    email,
+    password,
+    phone_number,
+    pledge_score,
+    pledge_amount,
+    score_amount,
+    outstanding_balance,
+    amount_paid_to_date
+  };
   await Users.addUser(newUser, res);
 });
 
