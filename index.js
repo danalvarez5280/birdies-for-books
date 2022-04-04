@@ -34,29 +34,8 @@ server.get('/users/login/:email/:password', async (req, res) => {
   res.json(userToLogIn);
 })
 
-server.post('/add-users/:name/:email/:password/:phone_number/:pledge_score/:pledge_amount/:score_amount/:outstanding-balance/:amount_paid_to_date', async (req, res) => {
-  const {
-    name,
-    email,
-    password,
-    phone_number,
-    pledge_score,
-    pledge_amount,
-    score_amount,
-    outstanding_balance,
-    amount_paid_to_date,
-    } = req.params;
-  const newUser = {
-    name,
-    email,
-    password,
-    phone_number,
-    pledge_score,
-    pledge_amount,
-    score_amount,
-    outstanding_balance,
-    amount_paid_to_date
-  };
+server.post('/users', async (req, res) => {
+  const newUser = req.body;
   await Users.addUser(newUser, res);
 });
 
